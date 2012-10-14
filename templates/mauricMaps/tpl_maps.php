@@ -86,7 +86,7 @@ function scriptContent($q,$r,$i){ $s=""; $upd=true;
 		//$s.="balloonContentBody:'".$q->tpl_main->lineInfo($q,$r,$i,false)."'";
 		$s.="},{";
 		$s.="balloonMinWidth:760,";
-		$s.="balloonMinHeight:320";
+		$s.="balloonMinHeight:380";
 		$s.="});";
 		$s.="myPlacemark".$i.".events.add('balloonopen',function(e){";
 		$s.="getBalloonContent('".$r->UUID."');";
