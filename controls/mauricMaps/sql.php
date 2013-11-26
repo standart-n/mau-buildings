@@ -8,19 +8,19 @@ function getTotal($q) { $s=""; $k="";
 	$s.="count(UUID) as COUNT_BUILDINGS ";
 	$s.="FROM VW_BUILDINGS_WEB WHERE (1=1) ";
 	if ($q->validate->direction($q)) { 
-		$s.="AND (DIRECTION='".$q->validate->toWin($q->url->f_direction)."') ";
+		$s.="AND (DIRECTION='".stripslashes($q->validate->toWin($q->url->f_direction))."') ";
 	}
 	if ($q->validate->ctp($q)) { 
-		$s.="AND (CTP='".$q->validate->toWin($q->url->f_ctp)."') ";
+		$s.="AND (CTP='".stripslashes($q->validate->toWin($q->url->f_ctp))."') ";
 	}
 	if ($q->validate->sector($q)) { 
-		$s.="AND (SREGION='".$q->validate->toWin($q->url->f_sector)."') ";
+		$s.="AND (SREGION='".stripslashes($q->validate->toWin($q->url->f_sector))."') ";
 	}
 	if ($q->validate->street($q)) { 
-		$s.="AND (STREET='".$q->validate->toWin($q->url->f_street)."') ";
+		$s.="AND (STREET='".stripslashes($q->validate->toWin($q->url->f_street))."') ";
 	}
 	if ($q->validate->home($q)) { 
-		$s.="AND (NOMER='".$q->validate->toWin($q->url->f_home)."') ";
+		$s.="AND (NOMER='".stripslashes($q->validate->toWin($q->url->f_home))."') ";
 	}
 	return $s;
 }
@@ -35,49 +35,24 @@ function table(&$q) { $s=""; $i=0; $k="";
 	$q->validate->skipForSql($q->url->last);
 	$s.="SELECT SKIP ".$q->url->last." * FROM VW_BUILDINGS_WEB WHERE (1=1) ";
 	if ($q->validate->direction($q)) { 
-		$s.="AND 	(DIRECTION='".$q->validate->toWin($q->url->f_direction)."') ";
+		$s.="AND 	(DIRECTION='".stripslashes($q->validate->toWin($q->url->f_direction))."') ";
 	}
 	if ($q->validate->ctp($q)) { 
-		$s.="AND (CTP='".$q->validate->toWin($q->url->f_ctp)."') ";
+		$s.="AND (CTP='".stripslashes($q->validate->toWin($q->url->f_ctp))."') ";
 	}
 	if ($q->validate->sector($q)) { 
-		$s.="AND (SREGION='".$q->validate->toWin($q->url->f_sector)."') ";
+		$s.="AND (SREGION='".stripslashes($q->validate->toWin($q->url->f_sector))."') ";
 	}
 	if ($q->validate->street($q)) { 
-		$s.="AND (STREET='".$q->validate->toWin($q->url->f_street)."') ";
+		$s.="AND (STREET='".stripslashes($q->validate->toWin($q->url->f_street))."') ";
 	}
 	if ($q->validate->home($q)) { 
-		$s.="AND (NOMER='".$q->validate->toWin($q->url->f_home)."') ";
+		$s.="AND (NOMER='".stripslashes($q->validate->toWin($q->url->f_home))."') ";
 	}
 	$s.="AND (STREET<>'') ";
 	$s.="AND (STREET<>'-') ";
 	$s.="AND (SREGION<>'') ";
 	$s.="ORDER by STREET, SORTEDCAPTION ASC ";
-
-
-	$k.="SELECT SKIP ".$q->url->last." * FROM VW_BUILDINGS_WEB WHERE (1=1) ";
-	if ($q->validate->direction($q)) { 
-		$k.="AND (DIRECTION='".($q->url->f_direction)."') ";
-	}
-	if ($q->validate->ctp($q)) { 
-		$k.="AND (CTP='".($q->url->f_ctp)."') ";
-	}
-	if ($q->validate->service($q)) { 
-		$k.="AND (SSERVICE='".($q->url->f_service)."') ";
-	}
-	if ($q->validate->sector($q)) { 
-		$k.="AND (SREGION='".($q->url->f_sector)."') ";
-	}
-	if ($q->validate->street($q)) { 
-		$k.="AND (STREET='".($q->url->f_street)."') ";
-	}
-	if ($q->validate->home($q)) { 
-		$k.="AND (NOMER='".($q->url->f_home)."') ";
-	}
-	$k.="AND (STREET<>'') ";
-	$k.="AND (STREET<>'-') ";
-	$k.="AND (SREGION<>'') ";
-	$k.="ORDER by STREET, SORTEDCAPTION ASC ";
 
 	//$q->alert=$k;
 	return $s;
@@ -86,19 +61,19 @@ function table(&$q) { $s=""; $i=0; $k="";
 function getList($q,$key) { $s=""; $k="";
 	$s.="SELECT ".$key." FROM VW_BUILDINGS_WEB WHERE (1=1) ";
 	if ($q->validate->direction($q)) { 
-		$s.="AND (DIRECTION='".$q->validate->toWin($q->url->f_direction)."') ";
+		$s.="AND (DIRECTION='".stripslashes($q->validate->toWin($q->url->f_direction))."') ";
 	}
 	if ($q->validate->ctp($q)) { 
-		$s.="AND (CTP='".$q->validate->toWin($q->url->f_ctp)."') ";
+		$s.="AND (CTP='".stripslashes($q->validate->toWin($q->url->f_ctp))."') ";
 	}
 	if ($q->validate->sector($q)) { 
-		$s.="AND (SREGION='".$q->validate->toWin($q->url->f_sector)."') ";
+		$s.="AND (SREGION='".stripslashes($q->validate->toWin($q->url->f_sector))."') ";
 	}
 	if ($q->validate->street($q)) { 
-		$s.="AND (STREET='".$q->validate->toWin($q->url->f_street)."') ";
+		$s.="AND (STREET='".stripslashes($q->validate->toWin($q->url->f_street))."') ";
 	}
 	if ($q->validate->home($q)) { 
-		$s.="AND (NOMER='".$q->validate->toWin($q->url->f_home)."') ";
+		$s.="AND (NOMER='".stripslashes($q->validate->toWin($q->url->f_home))."') ";
 	}
 	$s.="AND (STREET<>'') ";
 	$s.="AND (STREET<>'-') ";
